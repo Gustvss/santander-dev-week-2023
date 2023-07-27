@@ -1,5 +1,6 @@
 package com.tcser.santanderdevweek.domain.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
@@ -9,7 +10,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity(name = "tb_card")
-public class Card {
+public class Card implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,7 +20,7 @@ public class Card {
     @Column(unique = true)
     private String number;
 
-    @Column(name = "available_limit", scale = 13, precision = 2)
+    @Column(name = "available_limit", precision = 13, scale = 2)
     private BigDecimal limit;
 
 
